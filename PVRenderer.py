@@ -433,7 +433,12 @@ class PVRenderer:
         output_str = "\\version \"2.14.2\""+"\n"
         output_str += "\n"
         output_str += "\\header {"+"\n"
-        output_str += "   title = \""+self._inputData.meta_info["title"]+"\""+"\n"
+        title_value = ""
+        if ("title" in self._inputData.meta_info.keys()):
+            title_value = self._inputData.meta_info["title"]
+        else:
+            title_value = self._inputData.meta_info["score_file"]
+        output_str += "   title = \""+title_value+"\""+"\n"
         output_str += "   tagline = \"Performance Visualiser v.0.1, Audio Communication Group, TU Berlin\""+"\n"
         output_str += "   }"+"\n"
         output_str += "\n"

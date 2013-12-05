@@ -1,23 +1,8 @@
 import sys, string, os, pdb
 from copy import deepcopy
+from define import *
 #define indices of the required fields
-STAFF = 0
-VOICE = 1
-KEY = 2
-CLEF = 3
-MEASURE = 4
-BEAT_POS = 5
-METRIC = 6
-NOTENUM = 7
-NOTE_NAME = 8
-DURATION = 9
-TIME_SIG = 10
-SLUR = 11
-DYN_MARK = 12
-WEDGE = 13
-TEMPO_MARK = 14
-ARTICULATION = 15
-OFFSET_OPTIONAL_FIELDS = 16 # the absolute index of the first optional field is 13 
+OFFSET_OPTIONAL_FIELDS = ATTACK  
 
 R_MEASURE = 0
 R_BEAT_POS = 1

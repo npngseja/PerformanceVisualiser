@@ -4,25 +4,9 @@ import string, sys
 from PVParameterSet import *
 import pdb
 from PVOptionalFieldExtender import *
-
+from define import *
 #define indices of the required fields
-STAFF = 0
-VOICE = 1
-KEY = 2
-CLEF = 3
-MEASURE = 4
-BEAT_POS = 5
-METRIC = 6
-NOTENUM = 7
-NOTE_NAME = 8
-DURATION = 9
-TIME_SIG = 10
-SLUR = 11
-DYN_MARK = 12
-WEDGE = 13
-TEMPO_MARK = 14
-ARTICULATION = 15
-OFFSET_OPTIONAL_FIELDS = 16 # the absolute index of the first optional field is 13 
+OFFSET_OPTIONAL_FIELDS = ATTACK 
 
 class PVInputData:
 
@@ -69,6 +53,11 @@ class PVInputData:
 
             self._meta_info_dictionary["fields_count_optional"] = fields_count_optional
             self._meta_info_dictionary["fields_count_required"] = len(fields) - fields_count_optional
+        #handling files with no title
+        #in this case we save source file name as the title
+#        if ("title" in self._meta_info_dictionary == False):
+#            if ("score_file" in self._meta_info_dictionary == True):
+#                self._meta_info_dictionary["title"] = self._meta_info_dictionary["score_file"]
 
     def _loadToRawMatrix(self):
         input_fn = self._paramSet.input_file_name
@@ -140,8 +129,8 @@ class PVInputData:
         else:
             return 0
     def _comparator_pitch(self, a, b):
-        pa = int(a[NOTENUM])
-        pb = int(b[NOTENUM])
+        pa = int(a[NOTE_NUM])
+        pb = int(b[NOTE_NUM])
         if pa < pb:
             return 1
         elif pa > pb:
